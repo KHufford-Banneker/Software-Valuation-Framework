@@ -73,24 +73,30 @@ td.muted{color:#8896a6!important;font-weight:500}
 .chart-card{background:#fff;border-radius:12px;border:1px solid #e2e6ed;overflow:hidden;margin-top:16px;padding:20px 20px 16px;box-shadow:0 1px 6px rgba(0,0,0,.04)}
 .chart-card h3{font-size:14px;font-weight:700;color:#0a1628;margin:0 0 3px}
 .chart-subtitle{font-size:11px;color:#8896a6;margin-bottom:16px}
-.bars{display:flex;align-items:flex-end;gap:5px;height:200px}
-.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:default}
-.bar-label{font-size:10px;font-weight:700;color:#8896a6;transition:color .15s}
-.bar-label.hl{color:#1a8a94}.bar-label.hv{color:#0a1628}
-.bar-group{width:100%;max-width:54px;display:flex;flex-direction:column;align-items:stretch}
-.bar-fill{width:100%;transition:all .2s ease;min-height:2px}
-.bar-ghost{background:#e2e6ed;border-radius:4px 4px 0 0;opacity:.45}
-.bar-solid{border-radius:4px 4px 0 0}
-.bar-solid.default{background:linear-gradient(180deg,#c8d0dc,#a8b4c4)}
-.bar-solid.adjusted{background:linear-gradient(180deg,#7c5cbf,#5a3d99)}
-.bar-solid.premium{background:linear-gradient(180deg,#3bb8c4,#2a9da8)}
-.bar-solid.hl{background:linear-gradient(180deg,#3bb8c4,#2a9da8)!important}
-.bar-solid.hv{background:linear-gradient(180deg,#1a3a5c,#0a1628)!important}
-.bar-axis{font-size:10px;font-weight:600;color:#6b7a8d}.bar-axis.hl{color:#1a8a94}
-.chart-axis-label{text-align:center;font-size:11px;color:#8896a6;margin-top:6px;font-weight:500}
+.chart-wrap{position:relative;padding-left:40px}
+.chart-gridlines{position:absolute;left:40px;right:0;top:0;height:240px;pointer-events:none}
+.chart-gridline{position:absolute;left:0;right:0;border-top:1px dashed #e2e6ed}
+.chart-gridline span{position:absolute;left:-40px;width:36px;text-align:right;font-size:9px;font-weight:600;color:#8896a6;transform:translateY(-50%)}
+.bars{display:flex;align-items:flex-end;gap:6px;height:240px;position:relative;z-index:1}
+.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;cursor:default}
+.bar-mult{font-size:13px;font-weight:800;color:#0a1628;line-height:1.1;margin-bottom:1px}
+.bar-mult.hl{color:#1a8a94}.bar-mult.hv{color:#0a1628}
+.bar-ev{font-size:9px;font-weight:500;color:#8896a6;line-height:1.2;margin-bottom:4px}
+.bar-ev.hl{color:#1a8a94}
+.bar-rect{width:70%;max-width:60px;border-radius:4px 4px 2px 2px;transition:all .2s ease}
+.bar-bottom{margin-top:6px;font-size:10px;font-weight:600;color:#6b7a8d;text-align:center}
+.bar-bottom.hl{color:#1a8a94;font-weight:700}
 .legend{display:flex;gap:16px;justify-content:center;margin-top:12px;font-size:11px;color:#6b7a8d;flex-wrap:wrap}
 .legend-dot{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle}
-.methodology{background:#fff;border-radius:12px;border:1px solid #e2e6ed;margin-top:16px;padding:20px 24px;box-shadow:0 1px 6px rgba(0,0,0,.04);overflow:hidden}
+.methodology{background:#fff;border-radius:12px;border:1px solid #e2e6ed;margin-top:16px;box-shadow:0 1px 6px rgba(0,0,0,.04);overflow:hidden}
+.methodology summary{padding:16px 24px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;list-style:none;user-select:none}
+.methodology summary::-webkit-details-marker{display:none}
+.methodology summary::marker{display:none}
+.methodology summary h3{font-size:14px;font-weight:700;color:#0a1628;margin:0}
+.methodology summary .toggle-hint{font-size:11px;color:#8896a6;font-weight:500;display:flex;align-items:center;gap:4px}
+.methodology summary .chevron{transition:transform .2s ease;font-size:14px;color:#8896a6}
+.methodology[open] summary .chevron{transform:rotate(90deg)}
+.methodology .meth-body{padding:0 24px 20px}
 .methodology h3{font-size:14px;font-weight:700;color:#0a1628;margin:0 0 4px}
 .methodology .meth-note{font-size:11px;color:#6b7a8d;margin-bottom:14px;line-height:1.4}
 .meth-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -115,7 +121,7 @@ td.muted{color:#8896a6!important;font-weight:500}
 <div class="header"><div class="header-inner">
   <div class="brand"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><path d="M4 14L14 4L24 14L14 24L4 14Z" fill="#3bb8c4"/><path d="M9 14L14 9L19 14L14 19L9 14Z" fill="#0a1628"/></svg><span>Banneker Partners</span></div>
   <h1>Software Valuation Framework</h1>
-  <p>Enterprise software valuations are driven by the <strong>Rule of 40</strong> (ARR Growth + EBITDA Margin), then adjusted for <strong>company scale</strong> and <strong>customer retention</strong>. In the current market, retention is the sharpest predictor of valuation tier &mdash; sub-100% NRR triggers punitive discounts, and GRR below 90% signals fundamental product-market fit risk.</p>
+  <p>Enterprise software valuations are driven by the <strong>Rule of 40</strong> (ARR Growth + EBITDA Margin), then adjusted for <strong>company scale</strong> and <strong>customer retention</strong>. In the current market, the sharpest predictor of valuation is sustainable growth paired with strong customer retention. Buyers are looking for companies that grow efficiently, retain and expand their customer base.</p>
 </div></div>
 
 <div class="input-bar"><div class="input-bar-inner">
@@ -155,27 +161,32 @@ td.muted{color:#8896a6!important;font-weight:500}
     <div class="table-scroll"><table id="valTable"><thead><tr></tr></thead><tbody></tbody></table></div>
   </div>
   <div class="chart-card">
-    <h3>Implied Enterprise Value by Rule of 40 Score</h3>
+    <h3>How Rule of 40 Drives Your Multiple</h3>
     <div class="chart-subtitle" id="chartSubtitle"></div>
-    <div class="bars" id="barChart"></div>
-    <div class="chart-axis-label">Rule of 40 Score &#8594;</div>
+    <div class="chart-wrap">
+      <div class="chart-gridlines" id="chartGridlines"></div>
+      <div class="bars" id="barChart"></div>
+      <div style="text-align:center;font-size:10px;color:#8896a6;margin-top:2px;font-weight:500;padding-left:10px">Rule of 40 Score (ARR Growth % + EBITDA Margin %)</div>
+    </div>
     <div class="legend" id="chartLegend"></div>
   </div>
 
-  <div class="methodology">
-    <h3>Adjustment Methodology</h3>
-    <div class="meth-note">All retention adjustments use <strong>continuous linear interpolation</strong> between anchor points &mdash; every 1% change produces an incremental valuation impact. Curves are <strong>asymmetric</strong>: penalties below baseline are steeper than premiums above. Formula: <strong>Final Multiple = Base Multiple &times; (1 &ndash; Size Discount) &times; (1 + NRR Adj. + GRR Adj.)</strong></div>
+  <details class="methodology">
+    <summary><h3>Adjustment Methodology</h3><span class="toggle-hint"><span>View details</span><span class="chevron">&#9654;</span></span></summary>
+    <div class="meth-body">
+    <div class="meth-note">All adjustments use <strong>continuous linear interpolation</strong> between anchor points &mdash; every $1M of ARR and every 1% of retention produces an incremental impact. No cliff effects at band boundaries. Retention curves are <strong>asymmetric</strong>: penalties below baseline are steeper than premiums above. Formula: <strong>Final Multiple = Base Multiple &times; (1 &ndash; Size Discount) &times; (1 + NRR Adj. + GRR Adj.)</strong></div>
     <div class="meth-grid">
       <div>
-        <div class="meth-section-title"><span class="mdot" style="background:#e8923a"></span>Size Discount (Step Function)</div>
-        <table class="meth-table"><thead><tr><th>ARR Band</th><th>Discount</th></tr></thead><tbody>
-          <tr><td>$0 &ndash; 5M</td><td>&ndash;30%</td></tr>
-          <tr><td>$5 &ndash; 10M</td><td>&ndash;20%</td></tr>
-          <tr><td>$10 &ndash; 15M</td><td>&ndash;12%</td></tr>
-          <tr><td>$15 &ndash; 20M</td><td>&ndash;6%</td></tr>
-          <tr><td>$20 &ndash; 25M</td><td>&ndash;2%</td></tr>
-          <tr><td>$25M+</td><td>None</td></tr>
+        <div class="meth-section-title"><span class="mdot" style="background:#e8923a"></span>Size Discount (Continuous)</div>
+        <table class="meth-table"><thead><tr><th>ARR Anchor</th><th>Discount</th><th class="pp">Per $1M</th></tr></thead><tbody>
+          <tr class="danger"><td>&le; $0M</td><td>&ndash;30%</td><td class="pp">floor</td></tr>
+          <tr class="danger"><td>$5M</td><td>&ndash;20%</td><td class="pp">2.0%</td></tr>
+          <tr class="warn"><td>$10M</td><td>&ndash;12%</td><td class="pp">1.6%</td></tr>
+          <tr class="warn"><td>$15M</td><td>&ndash;6%</td><td class="pp">1.2%</td></tr>
+          <tr class="base"><td>$20M</td><td>&ndash;2%</td><td class="pp">0.8%</td></tr>
+          <tr class="good"><td>&ge; $25M</td><td>None</td><td class="pp">0.4%</td></tr>
         </tbody></table>
+        <div style="margin-top:8px;font-size:10px;color:#8896a6;line-height:1.3">Every $1M of ARR incrementally reduces the discount. A $6M company pays a smaller penalty than a $5M company, and a $9M company pays less than a $6M company. No cliff effects at band boundaries.</div>
         <div style="height:16px"></div>
         <div class="meth-section-title"><span class="mdot" style="background:#7c5cbf"></span>Gross Revenue Retention</div>
         <table class="meth-table"><thead><tr><th>GRR Anchor</th><th>Adj.</th><th class="pp">Per 1%</th></tr></thead><tbody>
@@ -208,7 +219,8 @@ td.muted{color:#8896a6!important;font-weight:500}
         </div>
       </div>
     </div>
-  </div>
+    </div>
+  </details>
 
   <div style="background:#fff;border-radius:12px;border:1px solid #e2e6ed;margin-top:16px;padding:18px 24px;box-shadow:0 1px 6px rgba(0,0,0,.04)">
     <div style="font-size:12px;font-weight:700;color:#0a1628;margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em">Disclosure</div>
@@ -229,15 +241,34 @@ td.muted{color:#8896a6!important;font-weight:500}
 <script>
 var DATA=[{ro40:0,m:1.5},{ro40:10,m:2.5},{ro40:20,m:4},{ro40:30,m:5},{ro40:40,m:6},{ro40:50,m:7},{ro40:60,m:8},{ro40:70,m:10},{ro40:80,m:12}];
 
-var SIZE_STEPS=[
-  {floor:0,ceil:5e6,d:.30,label:'$0\u20135M',desc:'Limited buyer pool and higher execution risk compress multiples at this scale.'},
-  {floor:5e6,ceil:10e6,d:.20,label:'$5\u201310M',desc:'Growth PE and strategic buyers begin engaging, broadening competitive dynamics.'},
-  {floor:10e6,ceil:15e6,d:.12,label:'$10\u201315M',desc:'Full institutional buyer spectrum opens \u2014 PE platforms, strategics, and search funds compete.'},
-  {floor:15e6,ceil:20e6,d:.06,label:'$15\u201320M',desc:'Approaching proven scale. Buyer tension drives multiples closer to par.'},
-  {floor:20e6,ceil:25e6,d:.02,label:'$20\u201325M',desc:'Near-scale. Minimal discount as the business approaches institutional thresholds.'},
-  {floor:25e6,ceil:Infinity,d:0,label:'$25M+',desc:'Full Rule-of-40 multiples apply. Broadest buyer interest.'}
+/* Size discount: continuous interpolation, anchored at $5M intervals
+   Values in millions for the anchor v, discount as decimal */
+var SIZE_ANCHORS=[
+  {v:0,adj:-.30},{v:5,adj:-.20},{v:10,adj:-.12},{v:15,adj:-.06},{v:20,adj:-.02},{v:25,adj:0}
 ];
-function getSize(a){for(var i=0;i<SIZE_STEPS.length;i++)if(a>=SIZE_STEPS[i].floor&&a<SIZE_STEPS[i].ceil)return SIZE_STEPS[i];return SIZE_STEPS[5]}
+function getSizeDisc(arrM){
+  var m=arrM/1e6;
+  if(m<=0)return .30;
+  if(m>=25)return 0;
+  for(var i=0;i<SIZE_ANCHORS.length-1;i++){
+    if(m>=SIZE_ANCHORS[i].v&&m<=SIZE_ANCHORS[i+1].v){
+      var t=(m-SIZE_ANCHORS[i].v)/(SIZE_ANCHORS[i+1].v-SIZE_ANCHORS[i].v);
+      return Math.abs(SIZE_ANCHORS[i].adj+t*(SIZE_ANCHORS[i+1].adj-SIZE_ANCHORS[i].adj));
+    }
+  }
+  return 0;
+}
+function describeSizeDisc(arrM){
+  var m=arrM/1e6,d=getSizeDisc(arrM);
+  if(m>=25)return{disc:0,label:'$25M+',desc:'Full Rule-of-40 multiples apply. Broadest buyer interest.'};
+  for(var i=0;i<SIZE_ANCHORS.length-1;i++){
+    if(m>=SIZE_ANCHORS[i].v&&m<=SIZE_ANCHORS[i+1].v){
+      var pp=Math.abs(SIZE_ANCHORS[i+1].adj-SIZE_ANCHORS[i].adj)/((SIZE_ANCHORS[i+1].v-SIZE_ANCHORS[i].v));
+      return{disc:d,label:'$'+r1(m)+'M',desc:'Size discount interpolated at ~'+r1(pp*100)+'% per $1M ARR in this range. Discount decreases as ARR grows toward $25M.'};
+    }
+  }
+  return{disc:d,label:'$'+r1(m)+'M',desc:''};
+}
 
 /* NRR: asymmetric, heavily penalizing below 100% */
 var NRR_ANCHORS=[
@@ -287,7 +318,7 @@ var hovCol=-1;
 
 function update(){
   var arr=parseARR(document.getElementById('arrInput').value)||10e6;
-  var sStep=getSize(arr),sDisc=sStep.d,hasSize=sDisc>0;
+  var sDisc=getSizeDisc(arr),sInfo=describeSizeDisc(arr),hasSize=sDisc>0.002;
   document.getElementById('arrParsed').textContent='= '+fmt(arr);
   var g=document.getElementById('growthInput').value,m=document.getElementById('marginInput').value;
   var hasSc=g!==''&&m!=='';var ro40=hasSc?parseFloat(g)+parseFloat(m):null;
@@ -302,11 +333,11 @@ function update(){
 
   var b1=document.getElementById('ro40Badge'),b2=document.getElementById('sizeBadge'),b3=document.getElementById('retBadge');
   if(hasSc){b1.classList.add('visible');document.getElementById('ro40Val').textContent=ro40+'%'}else b1.classList.remove('visible');
-  if(hasSize){b2.classList.add('visible');document.getElementById('sizeVal').textContent='\u2013'+Math.round(sDisc*100)+'%'}else b2.classList.remove('visible');
+  if(hasSize){b2.classList.add('visible');document.getElementById('sizeVal').textContent='\u2013'+r1(sDisc*100)+'%'}else b2.classList.remove('visible');
   if(hasRet&&Math.abs(retAdj)>0.002){b3.classList.add('visible');document.getElementById('retVal').textContent=psi(retAdj)}else b3.classList.remove('visible');
 
   var sc=document.getElementById('sizeCard');
-  if(hasSize){sc.classList.add('visible');document.getElementById('sizeTitle').textContent='Size: '+sStep.label+' (\u2013'+Math.round(sDisc*100)+'%)';document.getElementById('sizeDesc').textContent=sStep.desc}else sc.classList.remove('visible');
+  if(hasSize){sc.classList.add('visible');document.getElementById('sizeTitle').textContent='Size: '+sInfo.label+' (\u2013'+r1(sDisc*100)+'%)';document.getElementById('sizeDesc').textContent=sInfo.desc}else sc.classList.remove('visible');
 
   var rc=document.getElementById('retCard');
   if(hasRet){
@@ -318,7 +349,7 @@ function update(){
   }else{rc.classList.remove('visible')}
 
   var sub=[fmt(arr)+' ARR'];
-  if(hasSize)sub.push('\u2013'+Math.round(sDisc*100)+'% size');
+  if(hasSize)sub.push('\u2013'+r1(sDisc*100)+'% size');
   if(hasRet&&Math.abs(retAdj)>0.002)sub.push(ps1(retAdj)+' retention');
   document.getElementById('tableSubtitle').textContent=sub.join(' \u00b7 ');
 
@@ -330,7 +361,7 @@ function update(){
     var stats=[
       {l:'ARR',v:fmt(arr),c:''},
       {l:'Base Multiple',v:baseMult.toFixed(1)+'x',c:''},
-      {l:'Size Adj.',v:hasSize?'\u2013'+Math.round(sDisc*100)+'%':'None',c:hasSize?'orange':''},
+      {l:'Size Adj.',v:hasSize?'\u2013'+r1(sDisc*100)+'%':'None',c:hasSize?'orange':''},
       {l:'NRR Adj.',v:hasNRR?ps1(nrrAdj):'N/A',c:hasNRR&&nrrAdj<-0.2?'red':hasNRR&&Math.abs(nrrAdj)>0.002?'purple':''},
       {l:'GRR Adj.',v:hasGRR?ps1(grrAdj):'N/A',c:hasGRR&&grrAdj<-0.15?'red':hasGRR&&Math.abs(grrAdj)>0.002?'purple':''},
       {l:'Final Multiple',v:adjMult.toFixed(2)+'x',c:hasAnyAdj?'purple':''},
@@ -381,37 +412,52 @@ function update(){
 
   var maxV=arr*12*(combinedFactor>1?combinedFactor:1);
   var al=[];
-  if(hasSize)al.push('\u2013'+Math.round(sDisc*100)+'% size');
+  if(hasSize)al.push('\u2013'+r1(sDisc*100)+'% size');
   if(hasRet&&Math.abs(retAdj)>0.002)al.push(ps1(retAdj)+' retention');
+  var adjLabelsDesc=al.length>0?' Adjustments: '+al.join(', ')+'.':'';
   document.getElementById('chartSubtitle').textContent=hasAnyAdj
-    ?'Gray = base \u00b7 '+(combinedFactor<1?'Purple':'Teal')+' = adjusted ('+al.join(', ')+')'
-    :'At '+fmt(arr)+' ARR \u2014 no adjustments applied';
+    ?'Bar height = adjusted ARR multiple at each Rule of 40 level. Dollar values based on '+fmt(arr)+' ARR.'+adjLabelsDesc
+    :'Bar height = ARR multiple at each Rule of 40 level. Dollar values based on '+fmt(arr)+' ARR.';
+
+  // Gridlines
+  var maxMult=14;
+  var chartH=240;
+  var gridTicks=[2,4,6,8,10,12];
+  var gridHtml='';
+  gridTicks.forEach(function(tick){
+    var topPx=Math.round((1-tick/maxMult)*chartH);
+    gridHtml+='<div class="chart-gridline" style="top:'+topPx+'px"><span>'+tick+'x</span></div>';
+  });
+  document.getElementById('chartGridlines').innerHTML=gridHtml;
+
+  // Color ramp: warm for low multiples → teal for high
+  var barColors=['B85042','C96A3B','D4883A','D49F3A','8AAB5E','4DAA7B','2A9DA8','1A8A94','157A82'];
 
   var bh='';
   DATA.forEach(function(d,i){
-    var baseV=arr*d.m,adjV=baseV*combinedFactor;
-    var basePct=(baseV/maxV)*100,adjPct=(adjV/maxV)*100;
+    var mult=hasAnyAdj?d.m*combinedFactor:d.m;
+    var ev=arr*mult;
+    var barH=Math.max(4,Math.round((mult/maxMult)*chartH));
     var match=hasSc&&ro40!==null&&Math.abs(d.ro40-ro40)<5;
     var isH=hovCol===i;
-    var lc='bar-label'+(match?' hl':'')+(isH?' hv':'');
-    var ac='bar-axis'+(match?' hl':'');
-    if(hasAnyAdj){
-      if(combinedFactor<1){
-        var gh=basePct-adjPct;
-        var fc='bar-fill bar-solid adjusted'+(match?' hl':'')+(isH?' hv':'');
-        bh+='<div class="bar-col" data-col="'+i+'"><span class="'+lc+'">'+fmt(adjV)+'</span><div class="bar-group"><div class="bar-fill bar-ghost" style="height:'+gh+'%"></div><div class="'+fc+'" style="height:'+adjPct+'%;border-radius:0"></div></div><span class="'+ac+'">'+d.ro40+'%</span></div>';
-      }else{
-        var fc2='bar-fill bar-solid premium'+(match?' hl':'')+(isH?' hv':'');
-        bh+='<div class="bar-col" data-col="'+i+'"><span class="'+lc+'">'+fmt(adjV)+'</span><div class="bar-group"><div class="'+fc2+'" style="height:'+adjPct+'%"></div></div><span class="'+ac+'">'+d.ro40+'%</span></div>';
-      }
-    }else{
-      var fc3='bar-fill bar-solid default'+(match?' hl':'')+(isH?' hv':'');
-      bh+='<div class="bar-col" data-col="'+i+'"><span class="'+lc+'">'+fmt(baseV)+'</span><div class="bar-group"><div class="'+fc3+'" style="height:'+basePct+'%"></div></div><span class="'+ac+'">'+d.ro40+'%</span></div>';
-    }
+
+    var barColor=match?'3BB8C4':isH?'0A1628':barColors[i];
+    var multCls='bar-mult'+(match?' hl':'')+(isH?' hv':'');
+    var evCls='bar-ev'+(match?' hl':'');
+    var bottomCls='bar-bottom'+(match?' hl':'');
+
+    bh+='<div class="bar-col" data-col="'+i+'">';
+    bh+='<span class="'+multCls+'">'+mult.toFixed(1)+'x</span>';
+    bh+='<span class="'+evCls+'">'+fmt(ev)+'</span>';
+    bh+='<div class="bar-rect" style="height:'+barH+'px;background:#'+barColor+'"></div>';
+    bh+='<div class="'+bottomCls+'">'+d.ro40+'%</div>';
+    bh+='</div>';
   });
   document.getElementById('barChart').innerHTML=bh;
+
   document.getElementById('chartLegend').innerHTML=hasAnyAdj
-    ?'<span><span class="legend-dot" style="background:#d0d6e0"></span>Base valuation</span><span><span class="legend-dot" style="background:'+(combinedFactor<1?'#7c5cbf':'#3bb8c4')+'"></span>Adjusted valuation</span>':'';
+    ?'<span style="color:#8896a6">Multiples reflect size and retention adjustments. Hover or enter Growth + Margin to highlight your position.</span>'
+    :'<span style="color:#8896a6">Enter your Growth % and EBITDA Margin % above to highlight your Rule of 40 position on the chart.</span>';
   attachHover();
 }
 
