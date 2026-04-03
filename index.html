@@ -79,9 +79,9 @@ td.muted{color:#8896a6!important;font-weight:500}
 .chart-gridline span{position:absolute;left:-40px;width:36px;text-align:right;font-size:9px;font-weight:600;color:#8896a6;transform:translateY(-50%)}
 .bars{display:flex;align-items:flex-end;gap:6px;height:240px;position:relative;z-index:1}
 .bar-col{flex:1;display:flex;flex-direction:column;align-items:center;cursor:default}
-.bar-mult{font-size:13px;font-weight:800;color:#0a1628;line-height:1.1;margin-bottom:1px}
-.bar-mult.hl{color:#1a8a94}.bar-mult.hv{color:#0a1628}
-.bar-ev{font-size:9px;font-weight:500;color:#8896a6;line-height:1.2;margin-bottom:4px}
+.bar-mult{font-size:12px;font-weight:700;color:#3bb8c4;line-height:1.1;margin-bottom:1px}
+.bar-mult.hl{color:#0a1628}.bar-mult.hv{color:#0a1628}
+.bar-ev{font-size:12px;font-weight:700;color:#0a1628;line-height:1.2;margin-bottom:4px}
 .bar-ev.hl{color:#1a8a94}
 .bar-rect{width:70%;max-width:60px;border-radius:4px 4px 2px 2px;transition:all .2s ease}
 .bar-bottom{margin-top:6px;font-size:10px;font-weight:600;color:#6b7a8d;text-align:center}
@@ -148,13 +148,13 @@ td.muted{color:#8896a6!important;font-weight:500}
 </div></div>
 
 <div class="main">
-  <div class="adj-cards">
-    <div class="adj-card orange" id="sizeCard"><div class="ac-title"><span class="ac-dot" style="background:#e8923a"></span><span id="sizeTitle"></span></div><div class="ac-desc" id="sizeDesc"></div></div>
-    <div class="adj-card purple" id="retCard"><div class="ac-title"><span class="ac-dot" style="background:#7c5cbf"></span><span id="retTitle"></span></div><div class="ac-desc" id="retDesc"></div></div>
-  </div>
   <div class="scenario-card" id="scenarioCard">
     <div><div class="hl-label">Your Implied Valuation</div><div class="hl-value" id="scenarioValuation">&mdash;</div></div>
     <div class="scenario-stats" id="scenarioStats"></div>
+  </div>
+  <div class="adj-cards">
+    <div class="adj-card orange" id="sizeCard"><div class="ac-title"><span class="ac-dot" style="background:#e8923a"></span><span id="sizeTitle"></span></div><div class="ac-desc" id="sizeDesc"></div></div>
+    <div class="adj-card purple" id="retCard"><div class="ac-title"><span class="ac-dot" style="background:#7c5cbf"></span><span id="retTitle"></span></div><div class="ac-desc" id="retDesc"></div></div>
   </div>
   <div class="table-card">
     <div class="table-header"><h2>Rule of 40 Valuation Matrix</h2><span id="tableSubtitle"></span></div>
@@ -447,8 +447,8 @@ function update(){
     var bottomCls='bar-bottom'+(match?' hl':'');
 
     bh+='<div class="bar-col" data-col="'+i+'">';
-    bh+='<span class="'+multCls+'">'+mult.toFixed(1)+'x</span>';
     bh+='<span class="'+evCls+'">'+fmt(ev)+'</span>';
+    bh+='<span class="bar-mult" style="color:#'+barColor+'">'+mult.toFixed(1)+'x</span>';
     bh+='<div class="bar-rect" style="height:'+barH+'px;background:#'+barColor+'"></div>';
     bh+='<div class="'+bottomCls+'">'+d.ro40+'%</div>';
     bh+='</div>';
