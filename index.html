@@ -188,34 +188,34 @@ td.muted{color:#8896a6!important;font-weight:500}
         </tbody></table>
         <div style="margin-top:8px;font-size:10px;color:#8896a6;line-height:1.3">Every $1M of ARR incrementally reduces the discount. A $6M company pays a smaller penalty than a $5M company, and a $9M company pays less than a $6M company. No cliff effects at band boundaries.</div>
         <div style="height:16px"></div>
-        <div class="meth-section-title"><span class="mdot" style="background:#7c5cbf"></span>Gross Revenue Retention</div>
+        <div class="meth-section-title"><span class="mdot" style="background:#7c5cbf"></span>Gross Revenue Retention (Dominant Factor)</div>
         <table class="meth-table"><thead><tr><th>GRR Anchor</th><th>Adj.</th><th class="pp">Per 1%</th></tr></thead><tbody>
-          <tr class="danger"><td>&le; 70%</td><td>&ndash;50%</td><td class="pp">floor</td></tr>
-          <tr class="danger"><td>75%</td><td>&ndash;40%</td><td class="pp">2.0%</td></tr>
-          <tr class="danger"><td>80%</td><td>&ndash;30%</td><td class="pp">2.0%</td></tr>
-          <tr class="warn"><td>85%</td><td>&ndash;18%</td><td class="pp">2.4%</td></tr>
-          <tr class="base"><td>90%</td><td>0%</td><td class="pp">3.6%</td></tr>
-          <tr class="good"><td>95%</td><td>+15%</td><td class="pp">3.0%</td></tr>
-          <tr class="good"><td>&ge; 100%</td><td>+20%</td><td class="pp">cap</td></tr>
+          <tr class="danger"><td>&le; 70%</td><td>&ndash;60%</td><td class="pp">floor</td></tr>
+          <tr class="danger"><td>75%</td><td>&ndash;45%</td><td class="pp">3.0%</td></tr>
+          <tr class="danger"><td>80%</td><td>&ndash;35%</td><td class="pp">2.0%</td></tr>
+          <tr class="warn"><td>85%</td><td>&ndash;20%</td><td class="pp">3.0%</td></tr>
+          <tr class="base"><td>90%</td><td>0%</td><td class="pp">4.0%</td></tr>
+          <tr class="good"><td>95%</td><td>+18%</td><td class="pp">3.6%</td></tr>
+          <tr class="good"><td>&ge; 100%</td><td>+25%</td><td class="pp">cap</td></tr>
         </tbody></table>
         <div style="margin-top:8px;font-size:10px;color:#8896a6;line-height:1.3">
-          A 10-point GRR gap (80% vs 90%) produces a ~30% valuation difference, consistent with SaaS Capital data showing 50%+ multiple gaps at that spread. The 90&ndash;95% zone carries 3% per point &mdash; crossing into &ldquo;world-class&rdquo; territory.
+          GRR is the foundation metric. Low GRR signals structural churn that expansion revenue cannot fix. A company with 120% NRR but 80% GRR gets <strong>zero net retention benefit</strong> &mdash; the GRR penalty fully offsets the NRR premium. You cannot outrun bad gross retention.
         </div>
       </div>
       <div>
-        <div class="meth-section-title"><span class="mdot" style="background:#7c5cbf"></span>Net Revenue Retention (Asymmetric)</div>
+        <div class="meth-section-title"><span class="mdot" style="background:#7c5cbf"></span>Net Revenue Retention (Baseline = 105%)</div>
         <table class="meth-table"><thead><tr><th>NRR Anchor</th><th>Adj.</th><th class="pp">Per 1%</th></tr></thead><tbody>
           <tr class="danger"><td>&le; 80%</td><td>&ndash;75%</td><td class="pp">floor</td></tr>
           <tr class="danger"><td>90%</td><td>&ndash;50%</td><td class="pp">2.5%</td></tr>
           <tr class="danger"><td>95%</td><td>&ndash;35%</td><td class="pp">3.0%</td></tr>
-          <tr class="warn"><td>100%</td><td>0%</td><td class="pp">7.0% &#9888;</td></tr>
-          <tr class="base"><td>105%</td><td>+15%</td><td class="pp">3.0%</td></tr>
-          <tr class="good"><td>110%</td><td>+30%</td><td class="pp">3.0%</td></tr>
-          <tr class="good"><td>120%</td><td>+50%</td><td class="pp">2.0%</td></tr>
-          <tr class="good"><td>&ge; 130%</td><td>+65%</td><td class="pp">1.5%</td></tr>
+          <tr class="warn"><td>100%</td><td>&ndash;15%</td><td class="pp">4.0%</td></tr>
+          <tr class="base"><td>105%</td><td>0%</td><td class="pp">3.0%</td></tr>
+          <tr class="good"><td>110%</td><td>+15%</td><td class="pp">3.0%</td></tr>
+          <tr class="good"><td>120%</td><td>+35%</td><td class="pp">2.0%</td></tr>
+          <tr class="good"><td>&ge; 130%</td><td>+50%</td><td class="pp">1.5%</td></tr>
         </tbody></table>
         <div style="margin-top:10px;font-size:10px;color:#8896a6;line-height:1.3">
-          &#9888; The 95&ndash;100% NRR zone is the steepest segment at <strong>7% per point</strong>. Crossing below 100% NRR triggers outsized penalties &mdash; 2025&ndash;26 M&amp;A data shows sub-100% NRR companies trading at ~3x vs ~6x for 100&ndash;110% peers. Above 120% NRR commands a ~3x multiple premium over sub-100%.
+          100% NRR is <strong>not good enough</strong> &mdash; it means zero expansion from existing customers, which carries a &ndash;15% penalty. The baseline is 105%, reflecting the minimum expansion buyers expect from a healthy SaaS business. Even strong NRR cannot compensate for poor GRR &mdash; high expansion built on a churning base is unsustainable.
         </div>
       </div>
     </div>
@@ -270,16 +270,20 @@ function describeSizeDisc(arrM){
   return{disc:d,label:'$'+r1(m)+'M',desc:''};
 }
 
-/* NRR: asymmetric, heavily penalizing below 100% */
+/* NRR: 105% is the new baseline. 100% is a meaningful penalty.
+   High NRR cannot compensate for poor GRR — that's handled by GRR's steeper curve. */
 var NRR_ANCHORS=[
-  {v:80,adj:-.75},{v:90,adj:-.50},{v:95,adj:-.35},{v:100,adj:0},
-  {v:105,adj:.15},{v:110,adj:.30},{v:120,adj:.50},{v:130,adj:.65}
+  {v:80,adj:-.75},{v:90,adj:-.50},{v:95,adj:-.35},{v:100,adj:-.15},
+  {v:105,adj:0},{v:110,adj:.15},{v:120,adj:.35},{v:130,adj:.50}
 ];
 
-/* GRR: recalibrated — steep curve, ~15% gap between 90→95, ~30% between 80→90 */
+/* GRR: the foundation metric. Steeper than NRR because low GRR signals
+   structural churn that expansion can't fix. 80% GRR should nearly
+   wipe out even strong NRR — a company at 120% NRR / 80% GRR
+   gets +35% + (-35%) = 0% net. You can't outrun bad gross retention. */
 var GRR_ANCHORS=[
-  {v:70,adj:-.50},{v:75,adj:-.40},{v:80,adj:-.30},
-  {v:85,adj:-.18},{v:90,adj:0},{v:95,adj:.15},{v:100,adj:.20}
+  {v:70,adj:-.60},{v:75,adj:-.45},{v:80,adj:-.35},
+  {v:85,adj:-.20},{v:90,adj:0},{v:95,adj:.18},{v:100,adj:.25}
 ];
 
 function lerpAnchors(anchors,val){
